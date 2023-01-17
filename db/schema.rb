@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_210815) do
 
   create_table "alarms", force: :cascade do |t|
     t.string "name"
-    t.datetime "alarm_time"
+    t.time "alarm_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

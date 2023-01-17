@@ -18,8 +18,21 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module MyApp
   class Application < Rails::Application
+    #Adding cookies and session middleware
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: %i[get post options]
+      end
+    end
+    
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.action_dispatch.cookies_same_site_protection = :strict
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -32,6 +45,6 @@ module MyApp
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.api_only = true
   end
 end

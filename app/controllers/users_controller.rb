@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def jake 
+    jake_user = User.find(1)
+    render json: jake_user, serializer: UserJakeSerializer
+  end
+
   private
 
   def authenticate_user

@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Alarm.create!(name: "new alarm bit", user_id: User.first.id, alarm_time: ""alarm_time: "2000-01-01T09:45:00.000Z")
