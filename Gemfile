@@ -17,6 +17,12 @@ gem "puma", "~> 5.0"
 
 gem 'rack-cors'
 
+gem 'aws-sdk-s3'
+
+gem 'devise'
+
+gem "paperclip", "~> 2.0"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 

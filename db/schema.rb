@@ -42,6 +42,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_210815) do
   create_table "alarms", force: :cascade do |t|
     t.string "name"
     t.time "alarm_time"
+    t.string "audio_message_file_name"
+    t.string "audio_message_content_type"
+    t.integer "audio_message_file_size"
+    t.datetime "audio_message_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -53,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_210815) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
