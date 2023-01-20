@@ -18,17 +18,16 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
 module MyApp
   class Application < Rails::Application
-    #Adding cookies and session middleware
-    config.middleware.insert_before 0, Rack::Cors do
+    puts "before cors middleware"
+    config.middleware.use Rack::Cors do
       allow do
-        origins "*"
-        resource "*", headers: :any, methods: %i[get post options]
+        origins 'https://ba5b-70-107-111-224.ngrok.io'
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
-    
+    puts "after cors middleware"
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
 

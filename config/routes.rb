@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/signup', to: "users#create"
   get '/me', to: "users#show"
   get '/hello', to: 'application#hello_world'
+  patch '/alarms/:id/add_audio_message', to: "alarms#add_audio_message"
   match '*path', to: 'application#options', via: :options
 
   
