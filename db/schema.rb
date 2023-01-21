@@ -42,10 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_210605) do
   create_table "alarms", force: :cascade do |t|
     t.string "name"
     t.time "alarm_time"
-    t.string "audio_message_file_name"
-    t.string "audio_message_content_type"
-    t.bigint "audio_message_file_size"
-    t.datetime "audio_message_updated_at"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

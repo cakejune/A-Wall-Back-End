@@ -28,14 +28,14 @@ class AlarmsController < ApplicationController
   def add_audio_message
     alarm = Alarm.find_by(id: params[:id])
     if alarm
-      if params[:file] 
-        alarm.audio_message.attach(params[:file], { content_type: 'audio/mp4'})
-      end
-      render json: alarm, status: :ok
+        if params[:file] 
+            alarm.audio_messages.attach(io: params[:file], filename: 'audio_message.mp4')
+        end
+        render json: alarm, status: :ok
     else
-      render json: { error: "Alarm Not Found" }, status: :not_found
+        render json: { error: "Alarm Not Found" }, status: :not_found
     end
-  end
+end
 
   private
 

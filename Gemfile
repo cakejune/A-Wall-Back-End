@@ -20,6 +20,7 @@ gem 'rack-cors'
 gem 'aws-sdk-s3'
 
 gem 'paperclip', '~> 6.1'
+gem 'paperclip-av-transcoder'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
