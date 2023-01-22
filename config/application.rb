@@ -23,7 +23,7 @@ module MyApp
     puts "before cors middleware"
     config.middleware.use Rack::Cors do
       allow do
-        origins 'b1eb-70-107-111-224.ngrok.io'
+        origins '*'
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
