@@ -64,9 +64,12 @@ class AlarmsController < ApplicationController
 
   def add_audio_message
     alarm = Alarm.find_by(id: params[:id])
+    milli = params[:milli]
     if alarm
       if params[:audio_messages]
         alarm.audio_messages.attach(params[:audio_messages])
+        attachment = alarm.audio_messages.last
+        attachment.update!(duration: milli)
       end
       render json: alarm, status: :ok
     else
@@ -86,11 +89,11 @@ class AlarmsController < ApplicationController
            },
            status: :unprocessable_entity
   end
-  # def access_denied
-  # render json: {error: "We've hit a access point"}
-  # end
 end
 
+# def access_denied
+# render json: {error: "We've hit a access point"}
+# end
 #moved this action to the alarms_in_user_serializer
 # def specific_audio(alarm)
 #   alarms = []

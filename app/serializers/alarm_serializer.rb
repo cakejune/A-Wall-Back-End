@@ -18,12 +18,13 @@ class AlarmSerializer < ActiveModel::Serializer
             {
               #make sure to add the user id who posted the message once you create friends
               id: audio.id,
-              url: Rails.application.routes.url_helpers.rails_blob_url(audio, host: 'b1eb-70-107-111-224.ngrok.io', only_path: false),
+              url: Rails.application.routes.url_helpers.rails_blob_url(audio, host: '4ca3-71-190-177-64.ngrok.io', only_path: false),
               name: audio.name,
               record_type: audio.record_type,
               record_id: audio.record_id,
               blob_id: audio.blob_id,
-              created_at: audio.created_at
+              created_at: audio.created_at,
+              duration: audio.duration
             }
           
           alarms << value
