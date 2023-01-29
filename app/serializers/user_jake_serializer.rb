@@ -1,5 +1,5 @@
 class UserJakeSerializer < ActiveModel::Serializer
-  attributes :username
+  attributes :username, :id
 
   has_many :alarms, serializer: AlarmSerializer
 end

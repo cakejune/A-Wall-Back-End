@@ -50,7 +50,7 @@ class AlarmsController < ApplicationController
   end
 
   def create
-    new_alarm = Alarm.create!(params[:alarm_params])
+    new_alarm = Alarm.create!(alarm_params)
     render json: new_alarm, status: :accepted
   end
 
