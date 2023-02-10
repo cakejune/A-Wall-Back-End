@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
     before_action :set_cors_headers
+    # before_action :authenticate_user!
+
 
     include ActionController::Cookies
 
@@ -11,9 +13,5 @@ class ApplicationController < ActionController::Base
       headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     end
 
-    def hello_world
-      session[:count] = (session[:count] || 0) + 1
-      render json: { count: session[:count] }
-    end
 
 end

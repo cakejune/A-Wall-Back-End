@@ -1,4 +1,5 @@
 class AlarmsInUserSerializer < ActiveModel::Serializer
+  include JSONAPI::Serializer
   attributes :id, :name, :alarm_time, :user_id, :audio_files
 
   def audio_files

@@ -1,4 +1,5 @@
 class AlarmJustTimeSerializer < ActiveModel::Serializer
+  include JSONAPI::Serializer
   attributes :id, :name, :just_time, :user_id
 
   def just_time

@@ -41,6 +41,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -59,7 +61,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.hosts << "d650-24-90-1-119.ngrok.io"
+  config.hosts << "6dcf-71-190-177-64.ngrok.io"
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

@@ -27,11 +27,21 @@ module MyApp
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
-    puts "after cors middleware"
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    
+    #chatgpt message after removing below: 
+    #"I've removed the puts statements and the unneeded middleware. Since you're not using session 
+    #cookies and instead using async storage on your frontend, there's no need to include 
+    #ActionDispatch::Cookies and ActionDispatch::Session::CookieStore in the middleware stack."
+    # puts "after cors middleware"
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
 
-    config.action_dispatch.cookies_same_site_protection = :strict
+    # config.action_dispatch.cookies_same_site_protection = :strict
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
+    
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

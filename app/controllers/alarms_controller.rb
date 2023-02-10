@@ -77,6 +77,15 @@ class AlarmsController < ApplicationController
     end
   end
 
+  def get_user_alarms
+  user = User.find_by(id: params[:id])
+    if user.alarms.length > 0
+  render json: user.alarms, serializer: AlarmSerializer
+    else
+      render json: {error: "No alarms found"}, status: :not_found
+    end
+  end
+
   private
 
   def alarm_params
