@@ -1,13 +1,19 @@
 class AlarmsController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
+  
   # rescue_from Aws::S3::Errors::AccessDenied, with: :access_denied
   require "aws-sdk-s3"
 
-  def show
-    alarm = Alarm.find_by(id: params[:id])
+    def show
+      alarm = Alarm.find_by(id: params[:id])
+    
+      if alarm
+        render json: alarm, serializer: AlarmSerializer
+      else
+        render json: { error: "Alarm not found" }, status: :not_found
+      end
+    end
 
-    render json: alarm
-  end
 
   def show_audio
     audio =
@@ -77,14 +83,14 @@ class AlarmsController < ApplicationController
     end
   end
 
-  def get_user_alarms
-  user = User.find_by(id: params[:id])
-    if user.alarms.length > 0
-  render json: user.alarms, serializer: AlarmSerializer
-    else
-      render json: {error: "No alarms found"}, status: :not_found
-    end
-  end
+  # def get_user_alarms
+  # user = User.find_by(id: params[:id])
+  #   if user.alarms.length > 0
+  # render json: user.alarms, serializer: AlarmSerializer
+  #   else
+  #     render json: {error: "No alarms found"}, status: :not_found
+  #   end
+  # end
 
   private
 

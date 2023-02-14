@@ -53,7 +53,7 @@ class Users::SessionsController < Devise::SessionsController
              status: :ok
     else
       render json: {
-               error: "Incorrect email or password",
+               errors: "Incorrect email or password."
              },
              status: :unprocessable_entity
     end

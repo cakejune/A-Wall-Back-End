@@ -1,6 +1,6 @@
 class UserJakeSerializer < ActiveModel::Serializer
-  include JSONAPI::Serializer
-  attributes :username, :id
+  # include JSONAPI::Serializer
+  attributes :id, :email, :username
 
-  has_many :alarms, serializer: AlarmSerializer
+  # has_many :alarms, serializer: AlarmSerializer
 end
