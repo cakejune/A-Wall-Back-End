@@ -31,10 +31,11 @@ get "/me", to: "users#show"
 #Alarms
   get "/alarms/:id", to: "alarms#show"
   get "/alarms/:id/messages/:audio_id", to: "alarms#show_audio"
+  get "/alarms", to: "alarms#index"
   delete "/alarms/:id/messages/:audio_id/delete",
          to: "alarms#purge_audio",
          as: "purge_attachment"
-  get "/alarms", to: "alarms#index"
+  delete "/alarms/:id", to: "alarms#purge_alarm_and_audio_messages"
   post "/alarms", to: "alarms#create"
   patch "/alarms/:id", to: "alarms#update"
   patch "/alarms/:id/add_audio_message", to: "alarms#add_audio_message"

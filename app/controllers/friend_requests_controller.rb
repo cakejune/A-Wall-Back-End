@@ -1,5 +1,6 @@
 class FriendRequestsController < ApplicationController
-  def my_friend_requests
+
+    def my_friend_requests
     user = User.find_by(id: params[:id])
     render json: user.received_friend_requests.where(accepted?: false)
   end

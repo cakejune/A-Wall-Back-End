@@ -40,6 +40,18 @@ class AlarmsController < ApplicationController
     end
   end
 
+  def purge_alarm_and_audio_messages
+    alarm = Alarm.find_by(id: params[:id])
+    if alarm
+      alarm.audio_messages.each do |audio|
+        audio.purge
+      end
+      alarm.destroy
+    else
+      render json: { error: "Alarm not found" }, status: :not_found
+    end
+  end
+
   def purge_audio
     audio =
       Alarm.find_by(id: params[:id]).audio_messages.find_by(id: params[:audio_id])
@@ -80,6 +92,14 @@ class AlarmsController < ApplicationController
       render json: alarm, status: :ok
     else
       render json: { error: "Alarm Not Found" }, status: :not_found
+    end
+  end
+
+  def destroy
+    alarm = Alarm.find_by(id: params[:id])
+    if alarm
+      alarm.destroy
+      head :no_content
     end
   end
 
