@@ -65,7 +65,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: '6dcf-71-190-177-64.ngrok.io'}
+  config.action_mailer.default_url_options = { host: 'a7e6-70-107-111-224.ngrok.io'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
