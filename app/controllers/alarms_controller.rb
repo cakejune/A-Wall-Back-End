@@ -44,7 +44,7 @@ class AlarmsController < ApplicationController
     alarm = Alarm.find_by(id: params[:id])
     if alarm
       alarm.audio_messages.each do |audio|
-        audio.purge
+        audio.purge_audio
       end
       alarm.destroy
     else
